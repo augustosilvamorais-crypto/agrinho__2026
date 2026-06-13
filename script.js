@@ -61,3 +61,5 @@ async function enviarPergunta() {
   }
 
 }
+
+const API_KEY = "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";
