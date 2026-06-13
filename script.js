@@ -1,4 +1,4 @@
-const API_KEY = "SUA_CHAVE_AQUI";
+const API_KEY = "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";
 
 async function enviarPergunta() {
 
@@ -44,10 +44,20 @@ async function enviarPergunta() {
       }
     );
 
-    const dados = await resposta.json();
+console.log("Status:", resposta.status);
 
-    document.getElementById("resposta").innerHTML =
-      dados.choices[0].message.content;
+const dados = await resposta.json();
+
+console.log("Resposta:", dados);
+
+  if (!resposta.ok) {
+  document.getElementById("resposta").innerHTML =
+    JSON.stringify(dados, null, 2);
+  return;
+}
+
+document.getElementById("resposta").innerHTML =
+  dados.choices[0].message.content;
 
   }
 
@@ -62,4 +72,4 @@ async function enviarPergunta() {
 
 }
 
-const API_KEY = "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";
+
